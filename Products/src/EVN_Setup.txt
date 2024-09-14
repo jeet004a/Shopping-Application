@@ -1,0 +1,12 @@
+//Create a file with extension .env
+
+
+APP_SECRET =//Add your own key
+
+# Mongo DB
+MONGODB_URI=    //Add your own mongoDB url
+
+APP_SECRET =//Add your app secret
+
+# Port
+PORT=//Add your own test PORT

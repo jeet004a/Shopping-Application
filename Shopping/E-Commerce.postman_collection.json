@@ -1,0 +1,628 @@
+{
+    "info": {
+        "_postman_id": "be93adef-d714-4520-876a-a90c7b4f77c7",
+        "name": "Fruit-Bucket",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "18080365",
+        "_collection_link": "https://crimson-trinity-642519.postman.co/workspace/Jeet~af293f8e-9199-4542-a3ed-b813fca57e8c/collection/18080365-be93adef-d714-4520-876a-a90c7b4f77c7?action=share&source=collection_link&creator=18080365"
+    },
+    "item": [{
+            "name": "Customer",
+            "item": [{
+                    "name": "Customer SignUp",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "email",
+                                    "value": "Your_Email_Id",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "12345678",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/signup",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "signup"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer SignIn",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "email",
+                                    "value": "Your_Email_Id",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "123",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/login",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Add Address",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjQ1ODE1OTcsImV4cCI6MTcyNDc1NDM5N30.8ISplEuvvsOcxXhdR-chb99dm0Ghmlsc1eFEvq3bYwE",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "street",
+                                    "value": "Baidyabati",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "postalCode",
+                                    "value": "712222",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "city",
+                                    "value": "Kolkata",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "country",
+                                    "value": "India",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "66c6261ee896e53a443b7f26",
+                                    "type": "text",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/address",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "address"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Profile",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjQ3Nzk0NDAsImV4cCI6MTcyNDk1MjI0MH0.eUGXfJ8UvLV1KoBL1HTbCq76xmL8CrE5OBu8fZgaWe8",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/profile",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "profile"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Shopping Details",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmM2MjYxZWU4OTZlNTNhNDQzYjdmMjYiLCJpYXQiOjE3MjQzNDMyMTMsImV4cCI6MTcyNDUxNjAxM30.4uMxxlfs2VAyf381AC3ZnfPPJ7hKAUPInyQVh7GBI1k",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/shoping-details",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "shoping-details"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Customer Wishlist details",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmM2MjYxZWU4OTZlNTNhNDQzYjdmMjYiLCJpYXQiOjE3MjQzNDMyMTMsImV4cCI6MTcyNDUxNjAxM30.4uMxxlfs2VAyf381AC3ZnfPPJ7hKAUPInyQVh7GBI1k",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/customer/wishlist",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "customer",
+                                "wishlist"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Product",
+            "item": [{
+                    "name": "Create Product",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "name",
+                                    "value": "Apples",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "desc",
+                                    "value": "great Quality of Apple",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "banner",
+                                    "value": "Your_Product_Image",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "fruits",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "unit",
+                                    "value": "1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "140",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "available",
+                                    "value": "true",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "suplier",
+                                    "value": "Golden seed firming",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/product/create",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "product",
+                                "create"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Product By Type",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/category/fruits",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "category",
+                                "fruits"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "All Product",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}",
+                            "host": [
+                                "{{base_url}}"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add To Wishlist",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjQ3Nzk0NDAsImV4cCI6MTcyNDk1MjI0MH0.eUGXfJ8UvLV1KoBL1HTbCq76xmL8CrE5OBu8fZgaWe8",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "_id",
+                                    "value": "66c9e839e8f1553ebec5f9b9",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "66c9f569153954ed83f42d11",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/wishlist",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wishlist"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Wishlist By Id",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjQ3Nzk0NDAsImV4cCI6MTcyNDk1MjI0MH0.eUGXfJ8UvLV1KoBL1HTbCq76xmL8CrE5OBu8fZgaWe8",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "_id",
+                                    "value": "66c9f569153954ed83f42d11",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "66c9e839e8f1553ebec5f9b9",
+                                    "type": "text",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/wishlist/66c9e839e8f1553ebec5f9b9",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wishlist",
+                                "66c9e839e8f1553ebec5f9b9"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Cart",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjUxMDM3MDksImV4cCI6MTcyNTI3NjUwOX0.2oE7SZbx8LAq4nhGnvN4Dt5KBb600EmoiTNOffWw9sk",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "qty",
+                                    "value": "2",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "66c9e839e8f1553ebec5f9b9",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "_id",
+                                    "value": "66c9f569153954ed83f42d11",
+                                    "type": "text",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/cart",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "cart"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "New Request",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjQ4NjcyNTEsImV4cCI6MTcyNTA0MDA1MX0.AvFpHBSjM0nGC9LyWshJla-lkG1PjV1RAPoJ2qr0yNQ",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "DELETE",
+                        "header": [{
+                            "key": "_id",
+                            "value": "66c9f569153954ed83f42d11",
+                            "type": "text",
+                            "disabled": true
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "_id",
+                                    "value": "66c9f569153954ed83f42d11",
+                                    "type": "text",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "",
+                                    "value": "66c9e839e8f1553ebec5f9b9",
+                                    "type": "text",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/cart/66c9e839e8f1553ebec5f9b9",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "cart",
+                                "66c9e839e8f1553ebec5f9b9"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Orders",
+            "item": [{
+                    "name": "Create Orders",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjUxMDM3MDksImV4cCI6MTcyNTI3NjUwOX0.2oE7SZbx8LAq4nhGnvN4Dt5KBb600EmoiTNOffWw9sk",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                "key": "txnNumber",
+                                "value": "3",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/shopping/order",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "shopping",
+                                "order"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Orders Details",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjUxMDM3MDksImV4cCI6MTcyNTI3NjUwOX0.2oE7SZbx8LAq4nhGnvN4Dt5KBb600EmoiTNOffWw9sk",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/shopping/orders",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "shopping",
+                                "orders"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Cart Details",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indhc3RpamVldEBnbWFpbC5jb20iLCJfaWQiOiI2NmNiMDZjZDIxNmIwYmZlZGU3YzZhNDAiLCJpYXQiOjE3MjUxMDM3MDksImV4cCI6MTcyNTI3NjUwOX0.2oE7SZbx8LAq4nhGnvN4Dt5KBb600EmoiTNOffWw9sk",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/shopping/cart",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "shopping",
+                                "cart"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
