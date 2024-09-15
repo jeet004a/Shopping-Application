@@ -25,6 +25,4 @@ module.exports = async(app) => {
 
     // app.use(AppLogs)
     app.use(ErrorHandeler);
-
-
 }

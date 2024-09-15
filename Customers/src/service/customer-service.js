@@ -94,6 +94,10 @@ class CustomerService {
 
     }
 
+    async placeOrder(customerId, data) {
+        await this.repository.placeOrder(customerId, data)
+    }
+
 
     async SubscribeEvents(payload) {
 
@@ -102,7 +106,7 @@ class CustomerService {
         // payload = JSON.parse(payload)
 
         const { event, data } = payload;
-
+        // console.log(event)
         const { userId } = data;
         switch (event) {
             case 'ADD_TO_WISHLIST':
@@ -121,6 +125,9 @@ class CustomerService {
                 // this.addToCart(userId, product, qty, false);
                 this.deleteToCart(userId, data, 1)
                     // console.log(data.qty)
+                break;
+            case 'PLACE_ORDER':
+                this.placeOrder(userId, data)
                 break;
                 // case 'CREATE_ORDER':
                 //     this.ManageOrder(userId, order);

@@ -181,6 +181,20 @@ class CustomerRepository {
         }
     }
 
+
+    async placeOrder(userId, data) {
+        const userProfile = await CustomerModel.findById(userId).populate('orders').populate('cart')
+            // console.log(data)
+        let order = {
+            _id: data.data.data.orderId.toString(),
+            amount: data.data.data.amount,
+        }
+        userProfile.orders.push(order)
+        userProfile.cart = []
+        const savedData = await userProfile.save()
+        console.log(savedData)
+    }
+
 }
 
 module.exports = CustomerRepository

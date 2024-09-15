@@ -1,45 +1,57 @@
+const product = require('../../../../Products/src/api/product')
 const { CustomerModel } = require('../models')
 const { OrderModel, CartModel } = require('../models')
-const { v4: uuid } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 class ShoppingRepository {
     async Orders() {
         console.log('Shopping Repo')
     }
 
 
-    async CreateNewOrder(customerId, txnId) {
+    async CreateNewOrder(customerId) {
         try {
-            const userProfile = await CustomerModel.findById(customerId).populate('cart.product')
+            const userProfile = await CartModel.findOne({ customerId: customerId }).populate('items')
+
+            // let order = {}
             if (userProfile) {
-                let orderAmount = 0
-                let cartItem = userProfile.cart
-                if (cartItem.length > 0) {
-                    cartItem.map(item => {
-                        orderAmount += item.product.price * item.unit
-                    })
-                    let orderNumber = uuid()
-
-
-                    const order = new OrderModel({
-                        orderId: orderNumber,
-                        customerId: customerId,
-                        amount: orderAmount,
-                        status: 'received',
-                        txnId: txnId,
-                        items: cartItem
-                    })
-
-                    userProfile.cart = []
-
-                    order.populate('items.product');
-                    const orderResult = await order.save();
-
-                    userProfile.orders.push(orderResult)
-
-                    const userData = await userProfile.save()
-
-                    return userData
+                let items = []
+                let amount = 0
+                for (let i = 0; i < userProfile.items.length; i++) {
+                    // console.log(userProfile.items[i].product.price, " and unit is", userProfile.items[i].unit)
+                    amount = amount + (userProfile.items[i].product.price * userProfile.items[i].unit)
+                    const data = {
+                        product: userProfile.items[i].product,
+                        unit: userProfile.items[i].unit
+                    }
+                    items.push(data)
                 }
+                // console.log(items)
+                // console.log(amount)
+                const orderId = uuidv4()
+                    // order = {
+                    //         orderId: orderId,
+                    //         customerId: userProfile.customerId,
+                    //         amount: amount,
+                    //         status: "Recived",
+                    //         items: items
+                    //     }
+                const orderData = new OrderModel({
+                    orderId: orderId,
+                    customerId: userProfile.customerId,
+                    amount: amount,
+                    status: "Recived",
+                    items: items
+                })
+                const finalOrder = await orderData.save()
+                if (finalOrder) {
+                    userProfile.items = []
+                    await userProfile.save()
+                    return finalOrder
+                } else {
+                    return "Order Not placed"
+                }
+            } else {
+                return 'Profile Not Found'
             }
         } catch (error) {
             console.log(error)

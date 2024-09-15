@@ -1,20 +1,26 @@
 const UserAuth = require('./middlewares/auth')
-    // const ShoppingService = require('../services/shopping-service')
+const ShoppingService = require('../services/shopping-service')
     // const CustomerService = require('../services/customer-service')
+const { PublishCustomerEvent } = require('../utils')
 const AppLogs = require('../utils/api-request')
 
 module.exports = (app) => {
-    // const service = new ShoppingService()
-    // const customer = new CustomerService()
-    //Create Order
+    const service = new ShoppingService()
+        // const customer = new CustomerService()
+        //Create Order
     app.post('/order', UserAuth, AppLogs, async(req, res, next) => {
             try {
                 const { _id } = req.user
-                const { txnNumber } = req.body
-                const data = await service.PlaceOrder({ _id, txnNumber })
-                    // await service.PlaceOrder({ _id, txnNumber })
-                return res.status(200).json({ "Hello": "order" })
-                return res.status(200).json(data)
+
+                // const { txnNumber } = req.body
+                // const data = await service.PlaceOrder({ _id, txnNumber })
+                // await service.PlaceOrder({ _id, txnNumber })
+                // const data = await service.PlaceOrder({ _id })
+                const orderdata = await service.PlaceOrder({ _id })
+                    // return res.status(200).json({ "Hello": "order" })
+                const { data } = await service.GetProductByPayload(_id, orderdata, 'PLACE_ORDER')
+                PublishCustomerEvent(data)
+                return res.status(200).json(orderdata)
             } catch (error) {
                 next(error)
             }
@@ -22,7 +28,7 @@ module.exports = (app) => {
         //Get Order Details
     app.get('/orders', UserAuth, AppLogs, async(req, res, next) => {
         try {
-            const { data } = await customer.GetShopingDetails(req.user._id)
+            // const { data } = await customer.GetShopingDetails(req.user._id)
             return res.status(200).json(data.orders)
         } catch (error) {
             next(error)

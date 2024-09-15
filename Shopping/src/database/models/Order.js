@@ -15,9 +15,9 @@ const OrderSchema = new mongoose.Schema({
             desc: { type: String },
             banner: { type: String },
             type: { type: String },
-            unit: { type: Number },
+            // unit: { type: Number },
             price: { type: Number },
-            suplier: { type: String },
+            // suplier: { type: String },
         },
         unit: { type: Number, require: true }
     }]

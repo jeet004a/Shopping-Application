@@ -17,11 +17,15 @@ class ShoppingService {
 
     async PlaceOrder(userInputs) {
         try {
-            const { _id, txnNumber } = userInputs
+            // const { _id, txnNumber } = userInputs
+            const { _id } = userInputs
+            // console.log(_id)
+            // const orderResult = await this.repository.CreateNewOrder(_id, txnNumber)
+            // await this.repository.CreateNewOrder(_id, txnNumber)
+            // const orderResult = await this.repository.CreateNewOrder(_id)
+            const data = await this.repository.CreateNewOrder(_id)
+            return FormateData(data)
 
-            const orderResult = await this.repository.CreateNewOrder(_id, txnNumber)
-                // await this.repository.CreateNewOrder(_id, txnNumber)
-            return FormateData(orderResult)
         } catch (error) {
             throw new APIError("Data Not found", error);
         }
@@ -57,6 +61,18 @@ class ShoppingService {
 
             default:
                 break;
+        }
+    }
+
+    async GetProductByPayload(userId, data, event) {
+        if (data) {
+            const payload = {
+                event: event,
+                data: { userId, data }
+            }
+            return FormateData(payload)
+        } else {
+            return FormateData({ "msg": "Product Not available" })
         }
     }
 
