@@ -7,7 +7,7 @@ module.exports = async(app) => {
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(express.json())
     app.use(cors())
-        // app.use()
+        // app.use() 
         // app.use(express.static(__dirname + './public'))
 
     appEvents(app)
