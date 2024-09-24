@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const amqplib = require('amqplib')
+const { APP_SECRET, EXCHANGE_NAME, MESSAGE_BROKER_URL, QUEUE_NAME, CUSTOMER_BINDING_KEY } = require('../config')
 
-
-const { APP_SECRET } = require('../config')
 
 module.exports.GenerateSalt = async() => {
     return await bcrypt.genSalt()
@@ -42,4 +42,41 @@ module.exports.FormateData = (data) => {
     } catch (error) {
         console.log('Error while formate data', error)
     }
+}
+
+
+//Create Channel for communication between services
+module.exports.CreateChannel = async() => {
+    try {
+        const connection = await amqplib.connect(MESSAGE_BROKER_URL)
+        const channel = await connection.createChannel()
+        await channel.assertExchange(EXCHANGE_NAME, 'direct', false)
+        return channel
+    } catch (error) {
+        throw error
+    }
+}
+
+//Publish messages ** No need for customer because we are not publishing any massage for any service
+// module.exports.PublishMessage = async(channel, service, message) => {
+//     try {
+//         await channel.publish(EXCHANGE_NAME, binding_key, Buffer.from(message))
+//     } catch (error) {
+//         throw error
+//     }
+// }
+
+//Subscribe Messages
+module.exports.SubscribeMessage = async(channel, service) => {
+
+    const appQueue = await channel.assertQueue(QUEUE_NAME)
+
+    channel.bindQueue(appQueue.queue, EXCHANGE_NAME, CUSTOMER_BINDING_KEY)
+
+    channel.consume(appQueue.queue, data => {
+        console.log('Recieved Data')
+        console.log(data.content.toString())
+        service.SubscribeEvents(data.content.toString())
+        channel.ack(data)
+    })
 }

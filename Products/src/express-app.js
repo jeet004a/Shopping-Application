@@ -6,7 +6,7 @@ const AppLogs = require('./utils/api-request')
 const bodyParser = require('body-parser')
 
 
-module.exports = async(app) => {
+module.exports = async(app, channel) => {
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(express.json({ limit: '1mb' }));
     // app.use(express.urlencoded({ extended: true, limit: '1mb' }));
@@ -17,8 +17,11 @@ module.exports = async(app) => {
 
     // customer(app)
     // app.use(AppLogs)
-    appEvents(app)
-    product(app)
+
+    // appEvents(app)
+
+
+    product(app, channel)
         // app.use(AppLogs)
         // shopping(app)
         // app.use(AppLogs)

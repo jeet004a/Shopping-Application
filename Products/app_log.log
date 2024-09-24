@@ -148,3 +148,31 @@
 {"level":"info","message":"Sun Sep 15 2024 21:18:22 GMT+0530 (India Standard Time)-Host:\"gzip, deflate, br\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
 {"level":"info","message":"Sun Sep 15 2024 23:52:05 GMT+0530 (India Standard Time)-Host:\"gzip, deflate, br\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
 {"level":"info","message":"Mon Sep 16 2024 01:25:06 GMT+0530 (India Standard Time)-Host:\"gzip, deflate, br\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:38:32 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"GET\"-\"/:id\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:40:13 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:41:46 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:41:57 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:42:51 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:43:56 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:48:13 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:48:27 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Tue Sep 17 2024 23:48:28 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:22:41 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:22:54 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:24:35 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:24:48 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/wishlist\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:27:16 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:28:32 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:28:42 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:29:36 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:30:29 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:30:55 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:31:46 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Wed Sep 18 2024 00:32:49 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:18:49 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:19:11 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:19:48 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:20:13 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:24:14 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:58:24 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}
+{"level":"info","message":"Thu Sep 19 2024 23:58:50 GMT+0530 (India Standard Time)-Host:\"localhost:8002\"-method:\"PUT\"-\"/cart\"-/user/ \"wastijeet@gmail.com\"","private":true}

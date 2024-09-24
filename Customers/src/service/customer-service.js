@@ -103,11 +103,11 @@ class CustomerService {
 
         console.log('Triggering.... Customer Events')
 
-        // payload = JSON.parse(payload)
-
+        payload = JSON.parse(payload)
+            // console.log(payload)
         const { event, data } = payload;
-        // console.log(event)
         const { userId } = data;
+
         switch (event) {
             case 'ADD_TO_WISHLIST':
                 this.AddToWishList(userId, data)
