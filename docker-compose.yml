@@ -50,8 +50,8 @@ services:
   customer:
     build:
       dockerfile: Dockerfile
-      context: ./customer
-    container_name: customer
+      context: ./customers
+    container_name: customers
     ports:
       - "8001:8001"
     restart: always
