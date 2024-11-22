@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const amqplib = require('amqplib')
 const { APP_SECRET, EXCHANGE_NAME, MESSAGE_BROKER_URL, QUEUE_NAME, CUSTOMER_BINDING_KEY } = require('../config')
+const axios = require('axios')
+const { oauth2Client } = require("./googleConfig")
+
 
 
 module.exports.GenerateSalt = async() => {
@@ -22,16 +25,41 @@ module.exports.validatePassword = async(enteredPassword, savedPassword, salt) =>
 module.exports.GenerateSignature = async(payload) => {
     try {
         // console.log(payload)
-        return jwt.sign(payload, APP_SECRET, { expiresIn: "2d" })
+        return jwt.sign(payload, APP_SECRET, { expiresIn: "10s" })
     } catch (error) {
         console.log('Error while generating the Signature', error)
     }
 }
 
 module.exports.validateSignature = async(req) => {
-    const token = req.rawHeaders[1].split(" ")[1]
-    const payload = await jwt.verify(token, APP_SECRET)
-    req.user = payload
+    // console.log(req.rawHeaders[7].split(" ")[1])
+    // const token = req.rawHeaders[1].split(" ")[1]
+    for (let i = 0; i < req.rawHeaders.length; i++) {
+        if (req.rawHeaders[i].split(" ")[0] === 'Bearer') {
+            const token = req.rawHeaders[i].split(" ")[1]
+            const payload = await jwt.verify(token, APP_SECRET)
+            req.user = payload
+            return true
+        }
+    }
+    // const token = req.rawHeaders[7].split(" ")[1]
+
+    // const payload = await jwt.verify(token, APP_SECRET)
+    // req.user = payload
+    // return true
+}
+
+module.exports.setOAuthUser = async(req) => {
+    const code = req.query.code
+    const googleRes = await oauth2Client.getToken(code);
+    oauth2Client.setCredentials(googleRes.tokes)
+        // console.log('abc')
+    const userRes = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`)
+        // if (userRes) {
+        //     req.user = payload
+        //     return true
+        // }
+    req.user = userRes
     return true
 }
 

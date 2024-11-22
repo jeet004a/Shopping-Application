@@ -3,19 +3,21 @@ const { GenerateSignature, FormateData } = require('../../utils')
 
 class CustomerRepository {
 
-    async CreateCustomer({ email, password, salt, phone }) {
+    async CreateCustomer({ email, name, image }) {
 
         const user = new CustomerModel({
                 email,
-                password,
-                salt,
-                phone,
+                name,
+                image,
                 address: []
             })
             // console.log(password)
         const Customer = await user.save()
+            // console.log(Customer)
         const token = await GenerateSignature({ email: email, id: Customer._id })
-        return FormateData({ id: Customer._id, token })
+            // return FormateData({ id: Customer._id, token })
+        return FormateData({ Customer, token })
+            // return 'ABC'
             // return 'ABC'
     }
 
@@ -46,12 +48,17 @@ class CustomerRepository {
         try {
             const profile = await CustomerModel.findById(id).populate('address')
             if (profile) {
-                const { street, postalCode, city, country } = payload
+                if (profile.address) {
+                    profile.address = []
+                        // console.log('abc')
+                }
+                const { street, postalCode, city, country, state } = payload
                 const userAddress = new AddressModel({
                     street,
                     postalCode,
                     city,
-                    country
+                    country,
+                    state
                 })
                 await userAddress.save()
                 profile.address.push(userAddress)
@@ -130,7 +137,8 @@ class CustomerRepository {
                     _id: product.data._id.toString(),
                     name: product.data.name,
                     banner: product.data.banner,
-                    price: product.data.price
+                    price: product.data.price,
+                    type: product.data.type
                 }
                 const data = {
                     product: productData,

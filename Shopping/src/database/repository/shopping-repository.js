@@ -61,7 +61,10 @@ class ShoppingRepository {
 
 
     async addToCart(userId, payload) {
+        // const user = await CartModel.findOne({ customerId: userId })
         const user = await CartModel.findOne({ customerId: userId })
+            // console.log(payload._id.toString())
+            // console.log(user.items[0].product._id.toString())
             // for (let i = 0; i < user.items.length; i++) {
             //     console.log(user.items[i])
             // }
@@ -95,10 +98,12 @@ class ShoppingRepository {
                 return userProfile
             }
         } else {
+
             const newData = new CartModel({
-                customerId: userId,
-                items: []
-            })
+                    customerId: userId,
+                    items: []
+                })
+                // console.log('xxx')
             const product = {
                 _id: payload._id.toString(),
                 name: payload.name,
@@ -113,6 +118,7 @@ class ShoppingRepository {
             }
             newData.items.push(data)
             const userProfile = await newData.save()
+            return userProfile
         }
     }
 

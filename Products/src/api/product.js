@@ -10,16 +10,16 @@ module.exports = (app, channel) => {
 
     // UserAuth, AppLogs,
     //Create Products
-    app.post('/create', UserAuth, async(req, res, next) => {
+    app.post('/create', async(req, res, next) => { //UserAuth
             try {
-                console.log(req.user)
+                // console.log(req.user)
                 const { name, desc, banner, type, unit, price, available, supplier } = req.body
                 const { data } = await service.CreateProduct({ name, desc, banner, type, unit, price, available, supplier })
                     // console.log(data)
                 return res.json(data)
                     // return res.status(200).json({ "Msg": "ABC" })
             } catch (error) {
-                // next(error)
+                next(error)
             }
         })
         //Get All product By Ids
@@ -34,12 +34,15 @@ module.exports = (app, channel) => {
     })
 
     //Get All Products
-    app.get('/', UserAuth, AppLogs, async(req, res, next) => {
+    app.get('/', async(req, res, next) => { //UserAuth
         try {
             // const { data } = await service.GetProducts()
             const data = await service.GetProducts()
             return res.json(data)
+                // console.log('XYZ')
+                // return res.status(200).json({ "MSG": "Recied" })
         } catch (error) {
+            console.log('ABC')
             next(error)
         }
     })
@@ -94,9 +97,9 @@ module.exports = (app, channel) => {
                 // PublishCustomerEvent(data)
                 // PublishShoppingEvent(data)
 
-            PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
+            // PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
 
-            PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
+            // PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
 
             // const product = await service.GetProductById(_id)
             // const userCurrentData = await customerService.addToCart(userId, product, 1)
@@ -122,19 +125,59 @@ module.exports = (app, channel) => {
     //     }
     // })
 
-    //Delete item from cart
-    app.delete('/cart/:id', UserAuth, AppLogs, async(req, res) => {
+    //Delete item from cart  //Original
+    // app.delete('/cart/:id', UserAuth, AppLogs, async(req, res) => {
+    //     try {
+    //         const userId = req.user._id
+    //         const { data } = await service.GetProductByPayload(userId, { productId: req.params.id, qty: 1 }, "DELETE_TO_CART")
+    //         if (data) {
+    //             // PublishCustomerEvent(data)
+    //             // PublishShoppingEvent(data)
+    //             PublishMessage(channel, CUSTOMER_BINDIN_KEY, JSON.stringify(data))
+    //             PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
+    //             return res.status(200).json({ "MSG": "Delete event FIRED" })
+    //         }
+    //         // console.log(data)
+    //         return res.status(200).json({ "MSG": "Done" })
+
+    //     } catch (error) {
+    //         next(error)
+    //     }
+    // })
+
+
+    app.put('/cart/:id', async(req, res, next) => {
         try {
-            const userId = req.user._id
-            const { data } = await service.GetProductByPayload(userId, { productId: req.params.id, qty: 1 }, "DELETE_TO_CART")
+            // console.log(req.params.id)
+            const { data } = await service.GetProductByPayload(req.body.name, { productId: req.params.id, qty: 1 }, "ADD_TO_CART")
+
+            // PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
+            // PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
+            PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
+                // console.log('AAA')
+                // console.log(req.body.name)   
+            return res.status(200).json({ "MSG": "Done" })
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+
+    app.delete('/cart/:id', async(req, res) => {
+        try {
+            // const userId = req.user._id
+            // console.log(req)
+            // const { data } = await service.GetProductByPayload(userId, { productId: req.params.id, qty: 1 }, "DELETE_TO_CART")
+            const { data } = await service.GetProductByPayload(req.body.name, { productId: req.params.id, qty: 1 }, "DELETE_TO_CART")
+                // console.log(data)
             if (data) {
                 // PublishCustomerEvent(data)
                 // PublishShoppingEvent(data)
-                PublishMessage(channel, CUSTOMER_BINDIN_KEY, JSON.stringify(data))
-                PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
+                PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
+                    // PublishMessage(channel, SHOPPING_BINDING_KEY, JSON.stringify(data))
                 return res.status(200).json({ "MSG": "Delete event FIRED" })
             }
-            // console.log(data)
+            console.log(data)
             return res.status(200).json({ "MSG": "Done" })
 
         } catch (error) {

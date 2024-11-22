@@ -8,7 +8,7 @@ module.exports = (app) => {
 
         const { event, data } = req.body.payload;
         console.log("============= Order ================");
-        service.SubscribeEvents({ event, data });
+        // service.SubscribeEvents({ event, data });
 
         return res.status(200).json({ message: 'notified!' });
 

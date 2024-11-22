@@ -5,9 +5,11 @@ const Schema = mongoose.Schema;
 
 const CustomerSchema = new mongoose.Schema({
     email: String,
-    password: String,
-    salt: String,
-    phone: String,
+    // password: String,
+    // salt: String,
+    // phone: String,
+    name: String,
+    image: String,
     address: [
         { type: Schema.Types.ObjectId, ref: 'address', require: true }
     ],
@@ -16,7 +18,8 @@ const CustomerSchema = new mongoose.Schema({
             _id: { type: String, require: true },
             name: { type: String },
             banner: { type: String },
-            price: { type: Number }
+            price: { type: Number },
+            type: { type: String }
         },
         unit: { type: Number, require: true }
     }],

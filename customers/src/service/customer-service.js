@@ -1,18 +1,18 @@
 const { CustomerRepository } = require('../database')
 const { GenerateSalt, GeneratePassword, FindCustomer, validateSignature, GenerateSignature, FormateData, validatePassword } = require('../utils/index')
-
+const { CustomerModel, AddressModel } = require('../database/models')
 class CustomerService {
 
     constructor() {
         this.repository = new CustomerRepository()
     }
 
-    async SignUp({ email, password, phone }) {
-        let salt = await GenerateSalt()
-        let userPassword = await GeneratePassword(salt, password)
+    async SignUp({ email, name, image }) {
+        // let salt = await GenerateSalt()
+        // let userPassword = await GeneratePassword(salt, password)
 
         // console.log(userPassword)
-        const userdata = await this.repository.CreateCustomer({ email, password: userPassword, salt, phone })
+        const userdata = await this.repository.CreateCustomer({ email, name, image })
         return userdata
     }
 
@@ -26,7 +26,8 @@ class CustomerService {
 
                 if (validUser) {
                     const token = await GenerateSignature({ email: existingUserData.email, _id: existingUserData._id });
-                    return FormateData({ id: validUser._id, token });
+                    const user = existingUserData
+                    return FormateData({ id: existingUserData._id, token, user });
                 }
 
             }
@@ -106,8 +107,10 @@ class CustomerService {
         payload = JSON.parse(payload)
             // console.log(payload)
         const { event, data } = payload;
-        const { userId } = data;
-
+        // console.log(data)
+        let { userId } = data;
+        const user = await CustomerModel.find({ email: userId })
+        userId = user[0]._id
         switch (event) {
             case 'ADD_TO_WISHLIST':
                 this.AddToWishList(userId, data)
@@ -117,8 +120,9 @@ class CustomerService {
                 this.deleteToWishList(userId, data)
                 break;
             case 'ADD_TO_CART':
+
                 // this.addToCart(userId, product, qty, false);
-                this.addToCart(userId, data, 1)
+                this.addToCart(userId, data, 1) //orginal
                     // console.log(data.qty)
                 break;
             case 'DELETE_TO_CART':
@@ -127,6 +131,7 @@ class CustomerService {
                     // console.log(data.qty)
                 break;
             case 'PLACE_ORDER':
+                // console.log('AAA')
                 this.placeOrder(userId, data)
                 break;
                 // case 'CREATE_ORDER':

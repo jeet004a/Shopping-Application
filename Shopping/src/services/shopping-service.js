@@ -18,12 +18,15 @@ class ShoppingService {
     async PlaceOrder(userInputs) {
         try {
             // const { _id, txnNumber } = userInputs
-            const { _id } = userInputs
+            // const { _id } = userInputs  //original 
+            // const
             // console.log(_id)
             // const orderResult = await this.repository.CreateNewOrder(_id, txnNumber)
             // await this.repository.CreateNewOrder(_id, txnNumber)
             // const orderResult = await this.repository.CreateNewOrder(_id)
-            const data = await this.repository.CreateNewOrder(_id)
+            // const data = await this.repository.CreateNewOrder(_id) //original
+            const data = await this.repository.CreateNewOrder(userInputs)
+                // await this.repository.CreateNewOrder(userInputs)
             return FormateData(data)
 
         } catch (error) {
@@ -49,8 +52,10 @@ class ShoppingService {
 
     async SubscribeEvents(payload) {
         payload = JSON.parse(payload)
+            // console.log('ABC')
         const { event } = payload
         const { userId } = payload.data
+            // console.log(payload.data.data._id)
         switch (event) {
             // case event:
             case 'ADD_TO_CART':
